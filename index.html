@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prefeitura Municipal de Poço Redondo</title>
+    <style>
+        :root {
+            --primary-color: #1a5276;
+            --secondary-color: #2e86c1;
+            --accent-color: #f39c12;
+            --light-gray: #f8f9fa;
+            --dark-gray: #343a40;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        header {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            width: 60px;
+            height: 60px;
+            margin-right: 1rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/api/placeholder/1200/400") center/cover no-repeat;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 0 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+        
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .service-content {
+            padding: 1.5rem;
+        }
+        
+        .service-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .service-content p {
+            margin-bottom: 1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: var(--secondary-color);
+        }
+        
+        .news {
+            margin-bottom: 3rem;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .news-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .news-content {
+            padding: 1.5rem;
+        }
+        
+        .news-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .news-date {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-info {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .contact-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            background: var(--dark-gray);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 1rem;
+            text-align: left;
+            padding: 0 1rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-column ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--accent-color);
+        }
+        
+        .footer-bottom {
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 1rem;
+                justify-content: center;
+            }
+            
+            nav ul {
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 0.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="/api/placeholder/60/60" alt="Brasão de Poço Redondo">
+                <h1>Prefeitura de Poço Redondo</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#noticias">Notícias</a></li>
+                    <li><a href="#turismo">Turismo</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero" id="inicio">
+        <h1>Bem-vindo a Poço Redondo</h1>
+        <p>Uma cidade acolhedora com tradição, história e qualidade de vida para todos os cidadãos.</p>
+    </section>
+    
+    <main>
+        <section id="servicos">
+            <h2 class="section-title">Serviços ao Cidadão</h2>
+            <div class="services">
+                <div class="service-card">
+                    <img src="/api/placeholder/300/180" alt="Documentos">
+                    <div class="service-content">
+                        <h3>Documentação</h3>
+                        <p>Emissão de documentos, certidões, alvarás e outros serviços essenciais para nossos cidadãos.</p>
+                        <a href="#" class="btn">Acessar</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <img src="/api/placeholder/300/180" alt="Impostos">
+                    <div class="service-content">
+                        <h3>Impostos e Taxas</h3>
+                        <p>Consulta, emissão de guias e pagamento de IPTU, ISS e outros tributos municipais.</p>
+                        <a href="#" class="btn">Acessar</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <img src="/api/placeholder/300/180" alt="Saúde">
+                    <div class="service-content">
+                        <h3>Saúde</h3>
+                        <p>Informações sobre postos de saúde, campanhas de vacinação e atendimentos disponíveis.</p>
+                        <a href="#" class="btn">Acessar</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="noticias" class="news">
+            <h2 class="section-title">Notícias da Cidade</h2>
+            <div class="news-grid">
+                <div class="news-card">
+                    <img src="/api/placeholder/300/180" alt="Inauguração">
+                    <div class="news-content">
+                        <p class="news-date">15 de Março, 2025</p>
+                        <h3>Inauguração da Nova Praça Central</h3>
+                        <p>A nova praça central de Poço Redondo será inaugurada este final de semana com uma programação especial para toda a família.</p>
+                        <a href="#" class="btn">Ler mais</a>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <img src="/api/placeholder/300/180" alt="Educação">
+                    <div class="news-content">
+                        <p class="news-date">12 de Março, 2025</p>
+                        <h3>Escola Municipal Recebe Novo Laboratório</h3>
+                        <p>A Escola Municipal Antônio Ferreira acaba de receber um novo laboratório de informática com 20 computadores modernos.</p>
+                        <a href="#" class="btn">Ler mais</a>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <img src="/api/placeholder/300/180" alt="Evento Cultural">
+                    <div class="news-content">
+                        <p class="news-date">10 de Março, 2025</p>
+                        <h3>Festival de Cultura Local</h3>
+                        <p>O Festival de Cultura Local acontecerá no próximo mês celebrando as tradições e talentos de Poço Redondo.</p>
+                        <a href="#" class="btn">Ler mais</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="turismo">
+            <h2 class="section-title">Conheça Poço Redondo</h2>
+            <div class="services">
+                <div class="service-card">
+                    <img src="/api/placeholder/300/180" alt="Pontos Turísticos">
+                    <div class="service-content">
+                        <h3>Pontos Turísticos</h3>
+                        <p>Descubra os encantos naturais e históricos que fazem de Poço Redondo um lugar especial.</p>
+                        <a href="#" class="btn">Explorar</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <img src="/api/placeholder/300/180" alt="Gastronomia">
+                    <div class="service-content">
+                        <h3>Gastronomia Local</h3>
+                        <p>Conheça os sabores da nossa culinária regional e os melhores restaurantes da cidade.</p>
+                        <a href="#" class="btn">Descobrir</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <img src="/api/placeholder/300/180" alt="Eventos">
+                    <div class="service-content">
+                        <h3>Eventos e Festividades</h3>
+                        <p>Calendário de eventos, festas tradicionais e celebrações culturais de Poço Redondo.</p>
+                        <a href="#" class="btn">Ver agenda</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contato">
+            <h2 class="section-title">Contato</h2>
+            <div class="contact-info">
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <h3>Endereço</h3>
+                        <p>Prefeitura Municipal de Poço Redondo</p>
+                        <p>Av. Principal, 123 - Centro</p>
+                        <p>CEP: 00000-000</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <h3>Telefones</h3>
+                        <p>Gabinete: (00) 3000-0001</p>
+                        <p>Ouvidoria: (00) 3000-0002</p>
+                        <p>Atendimento ao Cidadão: (00) 3000-0003</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <h3>Horário de Atendimento</h3>
+                        <p>Segunda a Sexta</p>
+                        <p>08:00 às 17:00</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Prefeitura</h3>
+                    <ul>
+                        <li><a href="#">Sobre a cidade</a></li>
+                        <li><a href="#">Gestão atual</a></li>
+                        <li><a href="#">Secretarias</a></li>
+                        <li><a href="#">Transparência</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Serviços</h3>
+                    <ul>
+                        <li><a href="#">Portal do Cidadão</a></li>
+                        <li><a href="#">Licitações</a></li>
+                        <li><a href="#">Concursos</a></li>
+                        <li><a href="#">Legislação</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Fale Conosco</h3>
+                    <p>Email: contato@pocoredondo.gov.br</p>
+                    <p>Ouvidoria: ouvidoria@pocoredondo.gov.br</p>
+                    <div class="social-icons">
+                        <a href="#">FB</a>
+                        <a href="#">IG</a>
+                        <a href="#">YT</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Prefeitura Municipal de Poço Redondo. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
